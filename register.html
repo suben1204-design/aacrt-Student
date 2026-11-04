@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2027 AACRT 暨學會第60次年會 - 學生志工招募</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .header-gradient {
+      background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+    }
+    .accent-bar {
+      background: linear-gradient(90deg, #d97706 0%, #f59e0b 100%);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 font-sans text-slate-800 antialiased">
+
+  <!-- 頂部大會識別橫幅 -->
+  <header class="header-gradient text-white py-8 px-4 shadow-md">
+    <div class="max-w-3xl mx-auto text-center">
+      <div class="text-xs md:text-sm tracking-widest text-amber-400 font-semibold mb-2 uppercase">
+        The 26th AACRT & TWSRT 60th Annual Meeting
+      </div>
+      <h1 class="text-xl md:text-2xl font-bold leading-relaxed mb-3">
+        2027年第26屆亞澳區醫事放射師學術國際會議<br class="hidden md:inline">
+        與中華民國醫事放射學會第60次年會暨國際醫學影像學術研討會
+      </h1>
+      <div class="inline-block bg-amber-500 text-slate-950 font-bold px-4 py-1 rounded-full text-sm mt-1 shadow">
+        🌟 學生志工招募計畫
+      </div>
+    </div>
+  </header>
+
+  <!-- 金色裝飾線 -->
+  <div class="h-2 accent-bar w-full"></div>
+
+  <!-- 主要內容區 -->
+  <main class="max-w-3xl mx-auto px-4 py-8">
+    <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-100 p-6 md:p-10">
+      
+      <div class="mb-8 border-b border-slate-100 pb-4">
+        <h2 class="text-xl font-bold text-slate-900 mb-1">志工線上報名表</h2>
+        <p class="text-sm text-slate-500">請詳實填寫以下個人資料，以便主辦單位辦理活動保險與聯繫作業。</p>
+      </div>
+      
+      <form id="volunteerForm" class="space-y-6">
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-sm font-bold text-slate-700 mb-2">姓名 <span class="text-rose-500">*</span></label>
+            <input type="text" name="name" required class="w-full bg-slate-50 border border-slate-300 p-3 rounded-lg focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition" placeholder="請填寫中文全名">
+          </div>
+          <div>
+            <label class="block text-sm font-bold text-slate-700 mb-2">身分證字號 <span class="text-rose-500">*</span></label>
+            <input type="text" name="id_number" required class="w-full bg-slate-50 border border-slate-300 p-3 rounded-lg focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition" placeholder="投保活動平安險用">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-sm font-bold text-slate-700 mb-2">出生年月日 <span class="text-rose-500">*</span></label>
+            <input type="date" name="birthday" required class="w-full bg-slate-50 border border-slate-300 p-3 rounded-lg focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition">
+          </div>
+          <div>
+            <label class="block text-sm font-bold text-slate-700 mb-2">聯絡電話 (手機) <span class="text-rose-500">*</span></label>
+            <input type="tel" name="phone" required class="w-full bg-slate-50 border border-slate-300 p-3 rounded-lg focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition" placeholder="09xx-xxxxxx">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-sm font-bold text-slate-700 mb-2">就讀學校與系所 <span class="text-rose-500">*</span></label>
+            <select name="school" required class="w-full bg-slate-50 border border-slate-300 p-3 rounded-lg focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition">
+              <option value="" disabled selected>請選擇就讀學校與系所...</option>
+              <!-- 一般大學 -->
+              <option value="國立陽明交通大學 生物醫學影像暨放射科學系">國立陽明交通大學 生物醫學影像暨放射科學系</option>
+              <option value="中國醫藥大學 生物醫學影像暨放射科學學系">中國醫藥大學 生物醫學影像暨放射科學學系</option>
+              <option value="中山醫學大學 醫學影像暨放射科學系">中山醫學大學 醫學影像暨放射科學系</option>
+              <option value="高雄醫學大學 醫學影像暨放射科學系">高雄醫學大學 醫學影像暨放射科學系</option>
+              <option value="長庚大學 醫學影像暨放射科學系">長庚大學 醫學影像暨放射科學系</option>
+              <option value="義守大學 醫學影像暨放射科學系">義守大學 醫學影像暨放射科學系</option>
+              <!-- 科技大學 & 專科 -->
+              <option value="中臺科技大學 醫學影像暨放射科學系">中臺科技大學 醫學影像暨放射科學系</option>
+              <option value="元培醫事科技大學 醫學影像暨放射技術系">元培醫事科技大學 醫學影像暨放射技術系</option>
+              <option value="慈濟大學 醫學影像暨放射科學系">慈濟大學 醫學影像暨放射科學系</option>
+              <option value="樹人醫護管理專科學校 醫學影像暨放射技術科">樹人醫護管理專科學校 醫學影像暨放射技術科</option>
+              <!-- 預留其他彈性選項 -->
+              <option value="其他學校或非醫放相關系所">其他學校或非醫放相關系所</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-bold text-slate-700 mb-2">就讀年級 <span class="text-rose-500">*</span></label>
+            <input type="text" name="grade" required class="w-full bg-slate-50 border border-slate-300 p-3 rounded-lg focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition" placeholder="例如：大三">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-sm font-bold text-slate-700 mb-2">Email <span class="text-rose-500">*</span></label>
+          <input type="email" name="email" required class="w-full bg-slate-50 border border-slate-300 p-3 rounded-lg focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition" placeholder="寄發錄取通知與行前會連結用">
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-sm font-bold text-slate-700 mb-2">飲食習慣 (是否素食) <span class="text-rose-500">*</span></label>
+            <select name="diet" required class="w-full bg-slate-50 border border-slate-300 p-3 rounded-lg focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition">
+              <option value="" disabled selected>請選擇...</option>
+              <option value="否 (葷食)">否 (葷食)</option>
+              <option value="是 (素食)">是 (素食)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-bold text-slate-700 mb-2">報名排班方案 <span class="text-rose-500">*</span></label>
+            <select name="plan" required class="w-full bg-slate-50 border border-slate-300 p-3 rounded-lg focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition">
+              <option value="" disabled selected>請選擇...</option>
+              <option value="方案一：4/24 及 4/25 (兩天)">方案一：4/24 及 4/25 (兩天)</option>
+              <option value="方案二：僅 4/24 (一天)">方案二：僅 4/24 (一天)</option>
+              <option value="方案二：僅 4/25 (一天)">方案二：僅 4/25 (一天)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- 個資同意書區塊 -->
+        <div class="bg-amber-50/50 p-4 rounded-xl border border-amber-200/60 text-sm text-slate-600">
+          <label class="flex items-start cursor-pointer">
+            <input type="checkbox" required class="mt-1 mr-3 w-4 h-4 text-amber-600 border-slate-300 rounded focus:ring-amber-500">
+            <span>我同意提供上述個人資料，僅供「2027年第26屆亞澳區醫事放射師學術國際會議與中華民國醫事放射學會第60次年會」辦理志工招募、聯絡及投保活動平安險使用，絕不挪作他用。</span>
+          </label>
+        </div>
+        
+        <button type="submit" class="w-full bg-slate-900 hover:bg-amber-600 text-white font-bold py-4 px-6 rounded-xl shadow-lg transition duration-300 text-lg tracking-wide" id="submitBtn">
+          確認送出報名資料
+        </button>
+      </form>
+    </div>
+  </main>
+
+  <footer class="text-center py-6 text-xs text-slate-400">
+    © 2027 AACRT & TWSRT All Rights Reserved.
+  </footer>
+
+  <script>
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxgbeECUW40yY2akw1tqxcGJ-U5sIgJLvMzJU4VfH5fLiTcv1mgx2Z4e37x2zsvP-lUcg/exec'; 
+
+    document.getElementById('volunteerForm').addEventListener('submit', function(e) {
+      e.preventDefault(); 
+      
+      const btn = document.getElementById('submitBtn');
+      btn.innerText = '資料傳送中，請稍候...';
+      btn.classList.add('opacity-75', 'cursor-not-allowed');
+      btn.disabled = true;
+
+      const formData = new FormData(this);
+
+      fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.text())
+      .then(data => {
+        alert('報名成功！感謝您的熱情參與，我們將會透過 Email 與您聯繫後續事宜。');
+        document.getElementById('volunteerForm').reset(); 
+        btn.innerText = '確認送出報名資料';
+        btn.classList.remove('opacity-75', 'cursor-not-allowed');
+        btn.disabled = false;
+      })
+      .catch(error => {
+        console.error('Error!', error.message);
+        alert('報名傳送失敗，請稍後再試或聯繫主辦單位。');
+        btn.innerText = '確認送出報名資料';
+        btn.classList.remove('opacity-75', 'cursor-not-allowed');
+        btn.disabled = false;
+      });
+    });
+  </script>
+</body>
+</html>
