@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>2027 AACRT 暨學會第60次年會 - 學生志工招募</title>
+  <title>2027 AACRT 暨學會第60次年會 - 志工招募報名表（含醫學影像相關學系學生志工）</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     .header-gradient {
@@ -12,9 +12,23 @@
     .accent-bar {
       background: linear-gradient(90deg, #d97706 0%, #f59e0b 100%);
     }
+    .bg-gold-gradient {
+      background: linear-gradient(to right, #f59e0b, #d97706);
+    }
   </style>
 </head>
-<body class="bg-slate-50 font-sans text-slate-800 antialiased">
+<body class="bg-slate-50 font-sans text-slate-800 antialiased selection:bg-amber-200">
+
+  <!-- 頂部固定導覽列（提供返回首頁按鈕） -->
+  <nav class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-40">
+    <div class="max-w-3xl mx-auto px-4 h-14 flex justify-between items-center">
+      <a href="index.html" class="inline-flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-amber-600 transition group">
+        <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-slate-100 group-hover:bg-amber-100 text-slate-600 group-hover:text-amber-600 transition">←</span>
+        <span>返回活動首頁</span>
+      </a>
+      <span class="text-xs font-bold tracking-wider text-slate-400 uppercase">2027 AACRT Volunteer</span>
+    </div>
+  </nav>
 
   <!-- 頂部大會識別橫幅 -->
   <header class="header-gradient text-white py-8 px-4 shadow-md">
@@ -27,7 +41,7 @@
         與中華民國醫事放射學會第60次年會暨國際醫學影像學術研討會
       </h1>
       <div class="inline-block bg-amber-500 text-slate-950 font-bold px-4 py-1 rounded-full text-sm mt-1 shadow">
-        🌟 學生志工招募計畫
+        🌟 2027 AACRT 志工招募（含醫學影像相關學系學生志工）
       </div>
     </div>
   </header>
@@ -39,9 +53,14 @@
   <main class="max-w-3xl mx-auto px-4 py-8">
     <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-100 p-6 md:p-10">
       
-      <div class="mb-8 border-b border-slate-100 pb-4">
-        <h2 class="text-xl font-bold text-slate-900 mb-1">志工線上報名表</h2>
-        <p class="text-sm text-slate-500">請詳實填寫以下個人資料，以便主辦單位辦理聯絡作業。</p>
+      <div class="mb-8 border-b border-slate-100 pb-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+        <div>
+          <h2 class="text-xl font-bold text-slate-900 mb-1">志工線上報名表</h2>
+          <p class="text-sm text-slate-500">請詳實填寫以下個人資料，以便主辦單位辦理聯絡作業。</p>
+        </div>
+        <a href="index.html#schedule" class="text-xs font-semibold text-amber-600 hover:text-amber-700 hover:underline self-start sm:self-center">
+          📅 查看排班與福利說明 ↗
+        </a>
       </div>
       
       <form id="volunteerForm" class="space-y-6">
@@ -49,11 +68,12 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
             <label class="block text-sm font-bold text-slate-700 mb-2">姓名 <span class="text-rose-500">*</span></label>
-            <input type="text" name="name" required class="w-full bg-slate-50 border border-slate-300 p-3 rounded-lg focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition" placeholder="請填寫中文全名">
+            <input type="text" name="name" id="nameInput" required class="w-full bg-slate-50 border border-slate-300 p-3 rounded-lg focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition" placeholder="請填寫中文全名">
           </div>
           <div>
             <label class="block text-sm font-bold text-slate-700 mb-2">身分證字號 <span class="text-rose-500">*</span></label>
-            <input type="text" name="id_number" required class="w-full bg-slate-50 border border-slate-300 p-3 rounded-lg focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition" placeholder="請填寫身分證字號">
+            <input type="text" name="id_number" id="idNumberInput" required maxlength="10" pattern="^[A-Za-z][1289A-Za-z][0-9]{8}$" title="請輸入正確的10碼身分證字號或居留證號（首碼英文＋9碼數字）" class="w-full bg-slate-50 border border-slate-300 p-3 rounded-lg focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition uppercase" placeholder="例如：A123456789">
+            <p id="idErrorMsg" class="hidden text-xs text-rose-600 mt-1.5 font-medium">⚠️ 格式不符：請輸入 1 碼英文字母＋9 碼數字（共 10 碼）。</p>
           </div>
         </div>
 
@@ -64,14 +84,48 @@
           </div>
           <div>
             <label class="block text-sm font-bold text-slate-700 mb-2">聯絡電話 (手機) <span class="text-rose-500">*</span></label>
-            <input type="tel" name="phone" required class="w-full bg-slate-50 border border-slate-300 p-3 rounded-lg focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition" placeholder="09xx-xxxxxx">
+            <input type="tel" name="phone" id="phoneInput" required maxlength="11" pattern="^09[0-9]{2}-?[0-9]{6}$" title="請輸入09開頭的10碼手機號碼" class="w-full bg-slate-50 border border-slate-300 p-3 rounded-lg focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition" placeholder="09xx-xxxxxx">
+            <p id="phoneErrorMsg" class="hidden text-xs text-rose-600 mt-1.5 font-medium">⚠️ 格式不符：請輸入 09 開頭共 10 碼手機號碼。</p>
           </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- 第 3 列：報名身分別（二選一，切換第 4 列欄位） -->
+        <div>
+          <label class="block text-sm font-bold text-slate-700 mb-2">報名身分別 <span class="text-rose-500">*</span></label>
+          <div class="grid grid-cols-2 gap-4">
+            <label class="identity-option cursor-pointer">
+              <input type="radio" name="identity" value="專業人員" required class="peer sr-only">
+              <div class="flex items-center justify-center gap-2 p-3 rounded-lg border-2 border-slate-300 bg-slate-50 text-slate-600 font-bold transition peer-checked:border-amber-500 peer-checked:bg-amber-50 peer-checked:text-amber-700 peer-focus-visible:ring-2 peer-focus-visible:ring-amber-500 hover:border-amber-300">
+                <span>🩺</span><span>專業人員</span>
+              </div>
+            </label>
+            <label class="identity-option cursor-pointer">
+              <input type="radio" name="identity" value="學生志工" required class="peer sr-only">
+              <div class="flex items-center justify-center gap-2 p-3 rounded-lg border-2 border-slate-300 bg-slate-50 text-slate-600 font-bold transition peer-checked:border-amber-500 peer-checked:bg-amber-50 peer-checked:text-amber-700 peer-focus-visible:ring-2 peer-focus-visible:ring-amber-500 hover:border-amber-300">
+                <span>🎓</span><span>學生志工</span>
+              </div>
+            </label>
+          </div>
+          <p id="identityHint" class="text-xs text-slate-400 mt-1.5">請先選擇身分，下方將顯示對應的填寫欄位。</p>
+        </div>
+
+        <!-- 第 4 列（專業人員）：服務單位／職級 -->
+        <div id="proFields" class="hidden grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-sm font-bold text-slate-700 mb-2">服務單位 <span class="text-rose-500">*</span></label>
+            <input type="text" id="orgInput" class="w-full bg-slate-50 border border-slate-300 p-3 rounded-lg focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition" placeholder="請填寫服務醫院、機構或單位名稱">
+          </div>
+          <div>
+            <label class="block text-sm font-bold text-slate-700 mb-2">職級 <span class="text-rose-500">*</span></label>
+            <input type="text" id="jobTitleInput" class="w-full bg-slate-50 border border-slate-300 p-3 rounded-lg focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition" placeholder="例如：醫事放射師、組長、主任等">
+          </div>
+        </div>
+
+        <!-- 第 4 列（學生志工）：就讀學校與系所／就讀年級 -->
+        <div id="studentFields" class="hidden grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
             <label class="block text-sm font-bold text-slate-700 mb-2">就讀學校與系所 <span class="text-rose-500">*</span></label>
-            <select name="school" required class="w-full bg-slate-50 border border-slate-300 p-3 rounded-lg focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition">
+            <select name="school" id="schoolSelect" required disabled class="w-full bg-slate-50 border border-slate-300 p-3 rounded-lg focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition">
               <option value="" disabled selected>請選擇就讀學校與系所...</option>
               <!-- 一般大學 -->
               <option value="國立陽明交通大學 生物醫學影像暨放射科學系">國立陽明交通大學 生物醫學影像暨放射科學系</option>
@@ -86,12 +140,45 @@
               <option value="慈濟大學 醫學影像暨放射科學系">慈濟大學 醫學影像暨放射科學系</option>
               <option value="樹人醫護管理專科學校 醫學影像暨放射技術科">樹人醫護管理專科學校 醫學影像暨放射技術科</option>
               <!-- 預留其他彈性選項 -->
-              <option value="其他學校或非醫放相關系所">其他學校或非醫放相關系所</option>
+              <option value="其他學校或非醫放相關系所">其他學校或非醫放相關系所（請手動填寫）</option>
             </select>
+            <!-- 選擇「其他學校」時動態顯示的輸入框 -->
+            <div id="otherSchoolContainer" class="hidden mt-3">
+              <input type="text" id="otherSchoolInput" class="w-full bg-amber-50/40 border border-amber-300 p-3 rounded-lg focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition text-sm" placeholder="請填寫學校與系所全名（例：國立臺灣大學 生醫電資所）">
+            </div>
           </div>
+
           <div>
             <label class="block text-sm font-bold text-slate-700 mb-2">就讀年級 <span class="text-rose-500">*</span></label>
-            <input type="text" name="grade" required class="w-full bg-slate-50 border border-slate-300 p-3 rounded-lg focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition" placeholder="例如：大三">
+            <select name="grade" id="gradeSelect" required disabled class="w-full bg-slate-50 border border-slate-300 p-3 rounded-lg focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition">
+              <option value="" disabled selected>請選擇就讀年級...</option>
+              <optgroup label="大學部／四技">
+                <option value="大一">大一</option>
+                <option value="大二">大二</option>
+                <option value="大三">大三</option>
+                <option value="大四">大四</option>
+              </optgroup>
+              <optgroup label="五專部">
+                <option value="五專一">五專一</option>
+                <option value="五專二">五專二</option>
+                <option value="五專三">五專三</option>
+                <option value="五專四">五專四</option>
+                <option value="五專五">五專五</option>
+              </optgroup>
+              <optgroup label="研究所">
+                <option value="碩一">碩一</option>
+                <option value="碩二">碩二</option>
+                <option value="碩士班（碩三以上）">碩士班（碩三以上）</option>
+                <option value="博士班">博士班</option>
+              </optgroup>
+              <optgroup label="其他">
+                <option value="其他年級">其他年級（請手動填寫）</option>
+              </optgroup>
+            </select>
+            <!-- 選擇「其他年級」時動態顯示的輸入框 -->
+            <div id="otherGradeContainer" class="hidden mt-3">
+              <input type="text" id="otherGradeInput" class="w-full bg-amber-50/40 border border-amber-300 p-3 rounded-lg focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition text-sm" placeholder="請填寫您的年級或身分說明">
+            </div>
           </div>
         </div>
 
@@ -111,7 +198,7 @@
           </div>
           <div>
             <label class="block text-sm font-bold text-slate-700 mb-2">報名排班方案 <span class="text-rose-500">*</span></label>
-            <select name="plan" required class="w-full bg-slate-50 border border-slate-300 p-3 rounded-lg focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition">
+            <select name="plan" id="planSelect" required class="w-full bg-slate-50 border border-slate-300 p-3 rounded-lg focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition">
               <option value="" disabled selected>請選擇...</option>
               <option value="方案一：4/24 及 4/25 (兩天)">方案一：4/24 及 4/25 (兩天)</option>
               <option value="方案二：僅 4/24 (一天)">方案二：僅 4/24 (一天)</option>
@@ -131,6 +218,12 @@
         <button type="submit" class="w-full bg-slate-900 hover:bg-amber-600 text-white font-bold py-4 px-6 rounded-xl shadow-lg transition duration-300 text-lg tracking-wide" id="submitBtn">
           確認送出報名資料
         </button>
+
+        <div class="text-center pt-2">
+          <a href="index.html" class="text-sm text-slate-500 hover:text-slate-800 transition">
+            ← 取消並返回活動介紹首頁
+          </a>
+        </div>
       </form>
     </div>
   </main>
@@ -139,34 +232,246 @@
     © 2027 AACRT & TWSRT All Rights Reserved.
   </footer>
 
+  <!-- 皇家海軍藍 × 榮耀琥珀金 報名結果互動彈窗 (Modal) -->
+  <div id="resultModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-sm">
+    <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full overflow-hidden border border-slate-100 transform transition-all">
+      <!-- 彈窗頂部橫幅 -->
+      <div id="modalHeader" class="header-gradient text-white p-6 text-center relative">
+        <div id="modalIconBadge" class="w-16 h-16 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center text-3xl mx-auto mb-3 shadow-lg font-bold">
+          ✓
+        </div>
+        <h3 id="modalTitle" class="text-xl font-bold tracking-wide">報名資料已成功送出！</h3>
+        <p id="modalSubtitle" class="text-xs text-amber-300 mt-1">2027 AACRT 志工招募（含醫學影像相關學系學生志工）</p>
+      </div>
+      <div class="h-1.5 accent-bar w-full"></div>
+
+      <!-- 彈窗內文 -->
+      <div class="p-6 text-center space-y-4">
+        <p id="modalMessage" class="text-slate-600 text-sm leading-relaxed">
+          感謝您的熱情參與！我們已收到您的報名表單，後續錄取審核結果與線上行前培訓通知將會寄發至您填寫的 Email 信箱。
+        </p>
+
+        <!-- 報名摘要小卡 -->
+        <div id="modalSummaryBox" class="bg-slate-50 rounded-xl p-4 text-left text-xs text-slate-600 space-y-1.5 border border-slate-200">
+          <div><span class="font-bold text-slate-800">報名姓名：</span><span id="summaryName">-</span></div>
+          <div><span class="font-bold text-slate-800">校系／單位：</span><span id="summarySchool">-</span></div>
+          <div><span class="font-bold text-slate-800">排班方案：</span><span id="summaryPlan">-</span></div>
+        </div>
+
+        <!-- 動作按鈕 -->
+        <div class="flex flex-col sm:flex-row gap-3 pt-2">
+          <a href="index.html" class="flex-1 bg-gold-gradient hover:opacity-90 text-white font-bold py-3 px-4 rounded-xl shadow-md transition text-sm text-center">
+            返回活動首頁
+          </a>
+          <button type="button" id="closeModalBtn" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold py-3 px-4 rounded-xl transition text-sm">
+            關閉視窗
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
     const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxPlSm1CDxxmjx1to0lKJ37szr0XncLojfx1DoG0Pa2bGKSZtB4d1UmgcPNQz-eTOcX5w/exec'; 
 
+    const schoolSelect = document.getElementById('schoolSelect');
+    const otherSchoolContainer = document.getElementById('otherSchoolContainer');
+    const otherSchoolInput = document.getElementById('otherSchoolInput');
+
+    const gradeSelect = document.getElementById('gradeSelect');
+    const otherGradeContainer = document.getElementById('otherGradeContainer');
+    const otherGradeInput = document.getElementById('otherGradeInput');
+
+    const idNumberInput = document.getElementById('idNumberInput');
+    const idErrorMsg = document.getElementById('idErrorMsg');
+    const phoneInput = document.getElementById('phoneInput');
+    const phoneErrorMsg = document.getElementById('phoneErrorMsg');
+
+    // 1. 動態顯示「其他學校」輸入框
+    schoolSelect.addEventListener('change', function() {
+      const isOther = this.value === '其他學校或非醫放相關系所';
+      otherSchoolContainer.classList.toggle('hidden', !isOther);
+      otherSchoolInput.required = isOther;
+      if (isOther) otherSchoolInput.focus();
+    });
+
+    // 2. 動態顯示「其他年級」輸入框
+    gradeSelect.addEventListener('change', function() {
+      const isOther = this.value === '其他年級';
+      otherGradeContainer.classList.toggle('hidden', !isOther);
+      otherGradeInput.required = isOther;
+      if (isOther) otherGradeInput.focus();
+    });
+
+    // 3. 身分證字號自動去空白、轉大寫與即時檢查
+    idNumberInput.addEventListener('input', function() {
+      this.value = this.value.replace(/\s+/g, '').toUpperCase();
+      const valid = /^[A-Z][1289A-Z][0-9]{8}$/.test(this.value);
+      idErrorMsg.classList.toggle('hidden', this.value.length === 0 || valid);
+    });
+
+    // 4. 手機號碼自動格式化為 09xx-xxxxxx（並防止 Google Sheets 吃掉開頭的 0）
+    phoneInput.addEventListener('input', function() {
+      let digits = this.value.replace(/\D/g, '').slice(0, 10);
+      if (digits.length > 4) {
+        this.value = digits.slice(0, 4) + '-' + digits.slice(4);
+      } else {
+        this.value = digits;
+      }
+      const valid = /^09[0-9]{2}-[0-9]{6}$/.test(this.value);
+      phoneErrorMsg.classList.toggle('hidden', this.value.length === 0 || valid);
+    });
+
+    // 4-1. 報名身分別切換：專業人員 → 服務單位／職級；學生志工 → 就讀學校與系所／就讀年級
+    const proFields = document.getElementById('proFields');
+    const studentFields = document.getElementById('studentFields');
+    const orgInput = document.getElementById('orgInput');
+    const jobTitleInput = document.getElementById('jobTitleInput');
+    const identityHint = document.getElementById('identityHint');
+
+    function applyIdentity(identity) {
+      const isPro = identity === '專業人員';
+      const isStudent = identity === '學生志工';
+
+      proFields.classList.toggle('hidden', !isPro);
+      orgInput.required = isPro;
+      jobTitleInput.required = isPro;
+
+      studentFields.classList.toggle('hidden', !isStudent);
+      // 隱藏時停用，避免必填檢查擋住送出，也不會被打包進 FormData
+      schoolSelect.disabled = !isStudent;
+      gradeSelect.disabled = !isStudent;
+      otherSchoolInput.required = isStudent && schoolSelect.value === '其他學校或非醫放相關系所';
+      otherGradeInput.required = isStudent && gradeSelect.value === '其他年級';
+
+      identityHint.classList.toggle('hidden', isPro || isStudent);
+    }
+
+    document.querySelectorAll('input[name="identity"]').forEach(radio => {
+      radio.addEventListener('change', () => applyIdentity(radio.value));
+    });
+
+    // 5. 彈窗顯示控制
+    const resultModal = document.getElementById('resultModal');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+
+    function showResultModal({ success, name, school, plan }) {
+      const iconBadge = document.getElementById('modalIconBadge');
+      const title = document.getElementById('modalTitle');
+      const message = document.getElementById('modalMessage');
+      const summaryBox = document.getElementById('modalSummaryBox');
+
+      if (success) {
+        iconBadge.textContent = '✓';
+        iconBadge.className = 'w-16 h-16 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center text-3xl mx-auto mb-3 shadow-lg font-bold';
+        title.textContent = '報名資料已成功送出！';
+        message.textContent = '感謝您的熱情參與！我們已收到您的報名表單，後續錄取審核結果與線上行前培訓通知將會寄發至您填寫的 Email 信箱。';
+        document.getElementById('summaryName').textContent = name;
+        document.getElementById('summarySchool').textContent = school;
+        document.getElementById('summaryPlan').textContent = plan;
+        summaryBox.classList.remove('hidden');
+      } else {
+        iconBadge.textContent = '!';
+        iconBadge.className = 'w-16 h-16 rounded-full bg-rose-500 text-white flex items-center justify-center text-3xl mx-auto mb-3 shadow-lg font-bold';
+        title.textContent = '報名傳送失敗';
+        message.innerHTML = '很抱歉，網路連線或伺服器暫時無回應，請稍後再試一次，或直接來信聯繫主辦單位：<a href="mailto:aacrt2027@gmail.com" class="text-amber-600 font-bold underline">aacrt2027@gmail.com</a>';
+        summaryBox.classList.add('hidden');
+      }
+
+      resultModal.classList.remove('hidden');
+    }
+
+    closeModalBtn.addEventListener('click', () => {
+      resultModal.classList.add('hidden');
+    });
+    resultModal.addEventListener('click', (e) => {
+      if (e.target === resultModal) resultModal.classList.add('hidden');
+    });
+
+    // 6. 表單送出處理（與既有 Google Apps Script 欄位完全相容）
     document.getElementById('volunteerForm').addEventListener('submit', function(e) {
       e.preventDefault(); 
-      
+
+      // 再次確認身分證與手機格式
+      const idVal = idNumberInput.value.trim().toUpperCase();
+      const phoneDigits = phoneInput.value.replace(/\D/g, '');
+      if (!/^[A-Z][1289A-Z][0-9]{8}$/.test(idVal)) {
+        idErrorMsg.classList.remove('hidden');
+        idNumberInput.focus();
+        return;
+      }
+      if (!/^09[0-9]{8}$/.test(phoneDigits)) {
+        phoneErrorMsg.classList.remove('hidden');
+        phoneInput.focus();
+        return;
+      }
+      const formattedPhone = phoneDigits.slice(0, 4) + '-' + phoneDigits.slice(4);
+      phoneInput.value = formattedPhone;
+
       const btn = document.getElementById('submitBtn');
       btn.innerText = '資料傳送中，請稍候...';
       btn.classList.add('opacity-75', 'cursor-not-allowed');
       btn.disabled = true;
 
       const formData = new FormData(this);
+      formData.set('id_number', idVal);
+      formData.set('phone', formattedPhone);
+
+      // 依報名身分別，統一寫入原本的 school / grade 欄位，另送 identity 給新的「報名身分別」欄
+      const identity = formData.get('identity');
+      let finalSchool = '';
+      let finalGrade = '';
+
+      if (identity === '專業人員') {
+        finalSchool = orgInput.value.trim();
+        finalGrade = jobTitleInput.value.trim();
+      } else {
+        // 若選「其他學校」或「其他年級」，將自填內容合併回原欄位
+        finalSchool = schoolSelect.value;
+        if (finalSchool === '其他學校或非醫放相關系所' && otherSchoolInput.value.trim()) {
+          finalSchool = '其他：' + otherSchoolInput.value.trim();
+        }
+        finalGrade = gradeSelect.value;
+        if (finalGrade === '其他年級' && otherGradeInput.value.trim()) {
+          finalGrade = '其他：' + otherGradeInput.value.trim();
+        }
+      }
+      formData.set('school', finalSchool);
+      formData.set('grade', finalGrade);
+      formData.set('identity', identity);
+
+      const submittedName = formData.get('name');
+      const submittedPlan = formData.get('plan');
 
       fetch(APPS_SCRIPT_URL, {
         method: 'POST',
         body: formData
       })
-      .then(response => response.text())
-      .then(data => {
-        alert('報名成功！感謝您的熱情參與，我們將會透過 Email 與您聯繫後續事宜。');
-        document.getElementById('volunteerForm').reset(); 
-        btn.innerText = '確認送出報名資料';
-        btn.classList.remove('opacity-75', 'cursor-not-allowed');
-        btn.disabled = false;
+      .then(response => {
+        if (!response.ok) throw new Error('HTTP status ' + response.status);
+        return response.text();
+      })
+      .then(text => {
+        // Apps Script 出錯時也會回傳 HTTP 200（內容為 "Error: ..."），必須確認收到 "Success" 才算成功
+        if (!text || text.trim() !== 'Success') throw new Error('Apps Script 回應：' + text);
+        this.reset();
+        otherSchoolContainer.classList.add('hidden');
+        otherGradeContainer.classList.add('hidden');
+        otherSchoolInput.required = false;
+        otherGradeInput.required = false;
+        applyIdentity('');
+        showResultModal({
+          success: true,
+          name: submittedName,
+          school: finalSchool,
+          plan: submittedPlan
+        });
       })
       .catch(error => {
         console.error('Error!', error.message);
-        alert('報名傳送失敗，請稍後再試或聯繫主辦單位。');
+        showResultModal({ success: false });
+      })
+      .finally(() => {
         btn.innerText = '確認送出報名資料';
         btn.classList.remove('opacity-75', 'cursor-not-allowed');
         btn.disabled = false;

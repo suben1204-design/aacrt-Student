@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>2027 AACRT 學生志工招募計畫</title>
+  <title>2027 AACRT 志工招募（含醫學影像相關學系學生志工）</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     /* 客製化白金與藍金漸層 */
@@ -30,20 +30,45 @@
   <nav class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50 transition-all">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-16">
-        <div class="flex-shrink-0 flex items-center gap-2">
-          <span class="font-bold text-xl text-slate-900 tracking-wider">2027 AACRT</span>
-          <span class="hidden md:inline text-sm text-slate-500 border-l border-slate-300 pl-2">學生志工招募</span>
-        </div>
+        <a href="#hero" class="flex-shrink-0 flex items-center gap-2 group">
+          <span class="font-bold text-xl text-slate-900 group-hover:text-amber-600 transition tracking-wider">2027 AACRT</span>
+          <span class="hidden sm:inline xl:hidden text-sm text-slate-500 border-l border-slate-300 pl-2">志工招募（含學生志工）</span>
+          <span class="hidden xl:inline text-sm text-slate-500 border-l border-slate-300 pl-2">志工招募（含醫學影像相關學系學生志工）</span>
+        </a>
         <div class="hidden md:flex space-x-8">
           <a href="#benefits" class="text-slate-600 hover:text-amber-600 font-medium transition">專屬福利</a>
           <a href="#roles" class="text-slate-600 hover:text-amber-600 font-medium transition">任務編組</a>
           <a href="#schedule" class="text-slate-600 hover:text-amber-600 font-medium transition">排班與時程</a>
           <a href="#register" class="text-slate-600 hover:text-amber-600 font-medium transition">報名資訊</a>
         </div>
-        <div>
+        <div class="flex items-center gap-3">
           <!-- 這裡的 href 指向報名表檔案 -->
           <a href="register.html" class="bg-gold-gradient hover:opacity-90 text-white font-bold px-5 py-2 rounded-full shadow-md transition transform hover:scale-105 text-sm">
             立即報名
+          </a>
+          <!-- 手機版選單按鈕 -->
+          <button id="mobileMenuBtn" type="button" aria-label="開啟導覽選單" aria-expanded="false" class="md:hidden inline-flex items-center justify-center p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-amber-500 transition">
+            <svg id="menuIconOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+            <svg id="menuIconClose" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 手機版下拉導覽選單 -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white/95 backdrop-blur-md border-t border-slate-100 shadow-lg">
+      <div class="px-4 pt-3 pb-5 space-y-2">
+        <a href="#benefits" class="mobile-nav-link block px-4 py-2.5 rounded-xl text-base font-medium text-slate-700 hover:text-amber-600 hover:bg-amber-50/70 transition">🎁 專屬福利</a>
+        <a href="#roles" class="mobile-nav-link block px-4 py-2.5 rounded-xl text-base font-medium text-slate-700 hover:text-amber-600 hover:bg-amber-50/70 transition">🤝 任務編組</a>
+        <a href="#schedule" class="mobile-nav-link block px-4 py-2.5 rounded-xl text-base font-medium text-slate-700 hover:text-amber-600 hover:bg-amber-50/70 transition">📅 排班與時程</a>
+        <a href="#register" class="mobile-nav-link block px-4 py-2.5 rounded-xl text-base font-medium text-slate-700 hover:text-amber-600 hover:bg-amber-50/70 transition">📋 報名資訊</a>
+        <div class="pt-2 border-t border-slate-100">
+          <a href="register.html" class="block w-full text-center bg-gold-gradient text-white font-bold py-3 rounded-xl shadow-md">
+            👉 立即填寫線上報名表
           </a>
         </div>
       </div>
@@ -67,8 +92,9 @@
       </h2>
       
       <div class="inline-block bg-white/10 border border-white/20 backdrop-blur-md rounded-2xl p-6 md:p-8 mb-10 shadow-2xl">
-        <h3 class="text-gold-gradient text-2xl font-bold mb-2">學生志工招募計畫</h3>
-        <p class="text-slate-200 tracking-wide mb-6">（國際學術舞台 · 實務觀摩學習）</p>
+        <h3 class="text-gold-gradient text-2xl font-bold mb-1">2027 AACRT 志工招募</h3>
+        <p class="text-amber-300 font-semibold tracking-wide mb-2">（含醫學影像相關學系學生志工）</p>
+        <p class="text-slate-200 tracking-wide mb-6">國際學術舞台 · 專業傳承與實務觀摩</p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left text-sm md:text-base text-slate-100">
           <div class="flex items-center gap-3">
@@ -107,7 +133,7 @@
         <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-100 hover:border-amber-200 transition-colors group">
           <div class="w-14 h-14 bg-amber-100 text-amber-600 rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">🎓</div>
           <h3 class="text-xl font-bold text-slate-800 mb-3">1. 實質經歷加分</h3>
-          <p class="text-slate-600 leading-relaxed">頒發官方志工服務證明與感謝狀，可於未來研究所推甄、醫學中心放射師甄選履歷提供重要證明。</p>
+          <p class="text-slate-600 leading-relaxed">頒發大會官方志工服務證明與感謝狀，不僅為個人專業服務經歷留念，更可作為學生志工未來研究所推甄、醫院放射師甄選履歷之重要證明。</p>
         </div>
         <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-100 hover:border-amber-200 transition-colors group">
           <div class="w-14 h-14 bg-amber-100 text-amber-600 rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">🔬</div>
@@ -117,14 +143,14 @@
         <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-100 hover:border-amber-200 transition-colors group">
           <div class="w-14 h-14 bg-amber-100 text-amber-600 rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">🤝</div>
           <h3 class="text-xl font-bold text-slate-800 mb-3">3. 醫院人脈交流</h3>
-          <p class="text-slate-600 leading-relaxed">安排專屬交流茶會，提早與各大醫院主管、資深放射技術前輩交流，為臨床實習與就業探路。</p>
+          <p class="text-slate-600 leading-relaxed">結合參展商展或產業交流區與專屬交流時段，促進全國各醫院主管、資深放射師與青年學子跨世代交流，拓展專業人脈、為臨床實習與職涯探路。</p>
         </div>
         <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-100 hover:border-amber-200 transition-colors group">
           <div class="w-14 h-14 bg-amber-100 text-amber-600 rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">💳</div>
           <h3 class="text-xl font-bold text-slate-800 mb-3">4. 學會專屬會費減免</h3>
           <ul class="text-slate-600 leading-relaxed list-disc list-inside space-y-2">
-            <li>服勤當年度免除「學生會員」入會費與年費。</li>
-            <li>2027 至 2032 年（畢業後 5 年內）首次註冊學會正式「會員」免收千元入會費。</li>
+            <li>服勤當年度免除「學生會員」入會費與年費。<span class="block text-xs text-amber-700 mt-1 ml-5">※ 適用醫學影像相關學系在學學生志工</span></li>
+            <li>2027 至 2030 年（3 年內）首次註冊學會正式「會員」免收入會費。</li>
           </ul>
         </div>
       </div>
@@ -148,8 +174,8 @@
       </div>
 
       <div class="max-w-3xl mx-auto bg-amber-50 border-l-4 border-amber-500 p-6 rounded-r-xl mb-12 shadow-sm">
-        <h3 class="text-lg font-bold text-amber-700 mb-2">全程協同作業，非獨立作業</h3>
-        <p class="text-slate-700 text-sm md:text-base">所有組別均由學會理監事及資深幹部親自帶領，學生擔任輔助支援角色，不需承擔獨立決策或客訴壓力，並有機會與國際友人交流！</p>
+        <h3 class="text-lg font-bold text-amber-700 mb-2">前輩領航，團隊共進</h3>
+        <p class="text-slate-700 text-sm md:text-base">所有組別均由學會理監事及資深幹部帶領，志工夥伴（含學生志工）採團隊協同支援參與國際學者專家交流。</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -192,7 +218,7 @@
           <div class="space-y-6">
             <div class="bg-white p-6 rounded-xl shadow-md border-t-2 border-amber-400">
               <h4 class="text-lg font-bold text-blue-900 mb-2">方案一【兩日完整體驗】</h4>
-              <p class="text-slate-600 text-sm">4/24 (六) 及 4/25 (日) 全程參與（外縣市同學請衡量交通與住宿）。</p>
+              <p class="text-slate-600 text-sm">4/24 (六) 及 4/25 (日) 全程參與（外縣市夥伴／同學請自行衡量交通與住宿安排）。</p>
             </div>
             <div class="bg-white p-6 rounded-xl shadow-md border-t-2 border-slate-300">
               <h4 class="text-lg font-bold text-blue-900 mb-2">方案二【單日彈性服務】</h4>
@@ -229,7 +255,10 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left mb-12">
         <div class="bg-white/10 p-6 rounded-2xl backdrop-blur-sm border border-white/20">
           <h3 class="text-amber-400 font-bold text-lg mb-3">🎓 招募對象</h3>
-          <p class="text-slate-200">全國各大專院校醫學影像暨放射科學系所（含在校生、研究生）。</p>
+          <ul class="text-slate-200 text-sm leading-relaxed list-disc list-inside space-y-2">
+            <li>全國各大專院校<strong class="text-white">醫學影像暨放射相關學系學生</strong>（含大學部、專科部、碩博士班在校生）</li>
+            <li>全國醫事放射師、系友及醫療影像相關領域夥伴</li>
+          </ul>
         </div>
         <div class="bg-white/10 p-6 rounded-2xl backdrop-blur-sm border border-white/20">
           <h3 class="text-amber-400 font-bold text-lg mb-3">📋 報名流程</h3>
@@ -256,8 +285,30 @@
 
   <!-- 頁尾 -->
   <footer class="bg-slate-950 text-slate-500 py-6 text-center text-xs">
-    <p>© 2027 AACRT & TWSRT All Rights Reserved. Student Volunteer Recruitment.</p>
+    <p>© 2027 AACRT & TWSRT All Rights Reserved. Volunteer Recruitment (Including Medical Imaging Students).</p>
   </footer>
 
+  <script>
+    // 手機版導覽選單切換與點擊自動收合
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuIconOpen = document.getElementById('menuIconOpen');
+    const menuIconClose = document.getElementById('menuIconClose');
+
+    function toggleMobileMenu(forceClose = false) {
+      const isHidden = mobileMenu.classList.contains('hidden');
+      const shouldShow = forceClose ? false : isHidden;
+
+      mobileMenu.classList.toggle('hidden', !shouldShow);
+      menuIconOpen.classList.toggle('hidden', shouldShow);
+      menuIconClose.classList.toggle('hidden', !shouldShow);
+      mobileMenuBtn.setAttribute('aria-expanded', shouldShow ? 'true' : 'false');
+    }
+
+    mobileMenuBtn.addEventListener('click', () => toggleMobileMenu());
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => toggleMobileMenu(true));
+    });
+  </script>
 </body>
 </html>
