@@ -71,18 +71,6 @@
             <input type="text" name="name" id="nameInput" required class="w-full bg-slate-50 border border-slate-300 p-3 rounded-lg focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition" placeholder="請填寫中文全名">
           </div>
           <div>
-            <label class="block text-sm font-bold text-slate-700 mb-2">身分證字號 <span class="text-rose-500">*</span></label>
-            <input type="text" name="id_number" id="idNumberInput" required maxlength="10" pattern="^[A-Za-z][1289A-Za-z][0-9]{8}$" title="請輸入正確的10碼身分證字號或居留證號（首碼英文＋9碼數字）" class="w-full bg-slate-50 border border-slate-300 p-3 rounded-lg focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition uppercase" placeholder="例如：A123456789">
-            <p id="idErrorMsg" class="hidden text-xs text-rose-600 mt-1.5 font-medium">⚠️ 格式不符：請輸入 1 碼英文字母＋9 碼數字（共 10 碼）。</p>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <label class="block text-sm font-bold text-slate-700 mb-2">出生年月日 <span class="text-rose-500">*</span></label>
-            <input type="date" name="birthday" required class="w-full bg-slate-50 border border-slate-300 p-3 rounded-lg focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition">
-          </div>
-          <div>
             <label class="block text-sm font-bold text-slate-700 mb-2">聯絡電話 (手機) <span class="text-rose-500">*</span></label>
             <input type="tel" name="phone" id="phoneInput" required maxlength="11" pattern="^09[0-9]{2}-?[0-9]{6}$" title="請輸入09開頭的10碼手機號碼" class="w-full bg-slate-50 border border-slate-300 p-3 rounded-lg focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition" placeholder="09xx-xxxxxx">
             <p id="phoneErrorMsg" class="hidden text-xs text-rose-600 mt-1.5 font-medium">⚠️ 格式不符：請輸入 09 開頭共 10 碼手機號碼。</p>
@@ -200,10 +188,95 @@
             <label class="block text-sm font-bold text-slate-700 mb-2">報名排班方案 <span class="text-rose-500">*</span></label>
             <select name="plan" id="planSelect" required class="w-full bg-slate-50 border border-slate-300 p-3 rounded-lg focus:bg-white focus:ring-2 focus:ring-amber-500 focus:outline-none transition">
               <option value="" disabled selected>請選擇...</option>
-              <option value="方案一：4/24 及 4/25 (兩天)">方案一：4/24 及 4/25 (兩天)</option>
-              <option value="方案二：僅 4/24 (一天)">方案二：僅 4/24 (一天)</option>
-              <option value="方案二：僅 4/25 (一天)">方案二：僅 4/25 (一天)</option>
+              <option value="方案一：4/24（07:00–18:00）及 4/25（07:30–18:00）｜兩天">方案一：4/24（07:00–18:00）及 4/25（07:30–18:00）｜兩天</option>
+              <option value="方案二：4/24（07:00–21:00，含晚宴協助）及 4/25（07:30–18:00）｜兩天">方案二：4/24（07:00–21:00，含晚宴協助）及 4/25（07:30–18:00）｜兩天</option>
+              <option value="方案三：僅 4/24（07:00–18:00）｜一天">方案三：僅 4/24（07:00–18:00）｜一天</option>
+              <option value="方案四：僅 4/24（07:00–21:00，含晚宴協助）｜一天">方案四：僅 4/24（07:00–21:00，含晚宴協助）｜一天</option>
+              <option value="方案五：僅 4/25（07:30–18:00）｜一天">方案五：僅 4/25（07:30–18:00）｜一天</option>
             </select>
+          </div>
+        </div>
+
+        <!-- 排班與報到備註提醒 -->
+        <div class="bg-amber-50/70 border-l-4 border-amber-500 p-4 rounded-r-xl text-xs md:text-sm text-slate-700 space-y-1.5">
+          <div class="font-bold text-amber-800">📌 排班與報到注意事項：</div>
+          <ol class="list-decimal list-inside space-y-1">
+            <li>4/24 之 <strong>07:00–08:00</strong> 為志工教育訓練時間，請務必準時報到。</li>
+            <li>預計於 <strong>4 月 25 日晚上</strong> 舉辦志工慶功宴，詳細地點將另行通知。</li>
+          </ol>
+        </div>
+
+        <!-- AACRT 志工工作人員服（顏色、尺寸與尺寸參考圖） -->
+        <div class="bg-slate-50/80 p-5 rounded-xl border border-slate-200 space-y-5">
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 border-b border-slate-200 pb-3">
+            <h3 class="text-base font-bold text-slate-800 flex items-center gap-2">
+              <span>👕</span>
+              <span>AACRT 志工工作人員服</span>
+            </h3>
+            <span class="text-xs text-slate-500">請選擇顏色與尺寸（可參考下方尺寸表）</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- 選項 (1) 衣服顏色 -->
+            <div>
+              <label class="block text-sm font-bold text-slate-700 mb-2">衣服顏色 <span class="text-rose-500">*</span></label>
+              <div class="grid grid-cols-2 gap-3">
+                <label class="cursor-pointer">
+                  <input type="radio" name="shirt_color" value="黑色" required class="peer sr-only">
+                  <div class="flex items-center justify-center gap-2.5 p-3 rounded-lg border-2 border-slate-300 bg-white text-slate-700 font-bold transition peer-checked:border-amber-500 peer-checked:bg-amber-50 peer-checked:text-amber-700 peer-focus-visible:ring-2 peer-focus-visible:ring-amber-500 hover:border-amber-300">
+                    <span class="w-4 h-4 rounded-full bg-slate-900 border border-slate-700 shadow-inner"></span>
+                    <span>黑色</span>
+                  </div>
+                </label>
+                <label class="cursor-pointer">
+                  <input type="radio" name="shirt_color" value="白色" required class="peer sr-only">
+                  <div class="flex items-center justify-center gap-2.5 p-3 rounded-lg border-2 border-slate-300 bg-white text-slate-700 font-bold transition peer-checked:border-amber-500 peer-checked:bg-amber-50 peer-checked:text-amber-700 peer-focus-visible:ring-2 peer-focus-visible:ring-amber-500 hover:border-amber-300">
+                    <span class="w-4 h-4 rounded-full bg-white border-2 border-slate-300 shadow-inner"></span>
+                    <span>白色</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- 選項 (2) 衣服尺寸 -->
+            <div>
+              <label class="block text-sm font-bold text-slate-700 mb-2">衣服尺寸 <span class="text-rose-500">*</span></label>
+              <div class="grid grid-cols-3 sm:grid-cols-6 md:grid-cols-3 gap-2">
+                <label class="cursor-pointer">
+                  <input type="radio" name="shirt_size" value="S" required class="peer sr-only">
+                  <div class="text-center py-2.5 px-2 rounded-lg border-2 border-slate-300 bg-white text-slate-700 font-bold text-sm transition peer-checked:border-amber-500 peer-checked:bg-amber-50 peer-checked:text-amber-700 peer-focus-visible:ring-2 peer-focus-visible:ring-amber-500 hover:border-amber-300">S</div>
+                </label>
+                <label class="cursor-pointer">
+                  <input type="radio" name="shirt_size" value="M" required class="peer sr-only">
+                  <div class="text-center py-2.5 px-2 rounded-lg border-2 border-slate-300 bg-white text-slate-700 font-bold text-sm transition peer-checked:border-amber-500 peer-checked:bg-amber-50 peer-checked:text-amber-700 peer-focus-visible:ring-2 peer-focus-visible:ring-amber-500 hover:border-amber-300">M</div>
+                </label>
+                <label class="cursor-pointer">
+                  <input type="radio" name="shirt_size" value="L" required class="peer sr-only">
+                  <div class="text-center py-2.5 px-2 rounded-lg border-2 border-slate-300 bg-white text-slate-700 font-bold text-sm transition peer-checked:border-amber-500 peer-checked:bg-amber-50 peer-checked:text-amber-700 peer-focus-visible:ring-2 peer-focus-visible:ring-amber-500 hover:border-amber-300">L</div>
+                </label>
+                <label class="cursor-pointer">
+                  <input type="radio" name="shirt_size" value="XL" required class="peer sr-only">
+                  <div class="text-center py-2.5 px-2 rounded-lg border-2 border-slate-300 bg-white text-slate-700 font-bold text-sm transition peer-checked:border-amber-500 peer-checked:bg-amber-50 peer-checked:text-amber-700 peer-focus-visible:ring-2 peer-focus-visible:ring-amber-500 hover:border-amber-300">XL</div>
+                </label>
+                <label class="cursor-pointer">
+                  <input type="radio" name="shirt_size" value="XXL" required class="peer sr-only">
+                  <div class="text-center py-2.5 px-2 rounded-lg border-2 border-slate-300 bg-white text-slate-700 font-bold text-sm transition peer-checked:border-amber-500 peer-checked:bg-amber-50 peer-checked:text-amber-700 peer-focus-visible:ring-2 peer-focus-visible:ring-amber-500 hover:border-amber-300">XXL</div>
+                </label>
+                <label class="cursor-pointer">
+                  <input type="radio" name="shirt_size" value="XXXL" required class="peer sr-only">
+                  <div class="text-center py-2.5 px-2 rounded-lg border-2 border-slate-300 bg-white text-slate-700 font-bold text-sm transition peer-checked:border-amber-500 peer-checked:bg-amber-50 peer-checked:text-amber-700 peer-focus-visible:ring-2 peer-focus-visible:ring-amber-500 hover:border-amber-300">XXXL</div>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- 尺寸參考圖 -->
+          <div class="bg-white rounded-xl border border-slate-200 p-3 text-center">
+            <div class="flex items-center justify-between text-xs text-slate-500 mb-2 px-1">
+              <span class="font-semibold text-slate-700">📏 工作人員服尺寸對照表（35001-01 ADULT）</span>
+              <span class="text-amber-600 font-medium">點擊圖片可放大檢視 🔍</span>
+            </div>
+            <img src="assets/images/shirt-size-chart.jpg" alt="AACRT 志工工作人員服尺寸對照表（S～XXXL）" id="sizeChartImg" class="w-full max-w-xl mx-auto rounded-lg cursor-zoom-in hover:opacity-95 transition">
           </div>
         </div>
 
@@ -256,6 +329,7 @@
           <div><span class="font-bold text-slate-800">報名姓名：</span><span id="summaryName">-</span></div>
           <div><span class="font-bold text-slate-800">校系／單位：</span><span id="summarySchool">-</span></div>
           <div><span class="font-bold text-slate-800">排班方案：</span><span id="summaryPlan">-</span></div>
+          <div><span class="font-bold text-slate-800">工作人員服：</span><span id="summaryShirt">-</span></div>
         </div>
 
         <!-- 動作按鈕 -->
@@ -271,6 +345,14 @@
     </div>
   </div>
 
+  <!-- 尺寸參考圖放大燈箱 (Lightbox) -->
+  <div id="sizeLightbox" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm cursor-zoom-out">
+    <div class="relative max-w-4xl w-full bg-white rounded-2xl p-3 shadow-2xl">
+      <button type="button" id="closeLightboxBtn" aria-label="關閉放大圖片" class="absolute -top-3 -right-3 w-9 h-9 rounded-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold shadow-lg flex items-center justify-center text-lg transition">✕</button>
+      <img src="assets/images/shirt-size-chart.jpg" alt="AACRT 志工工作人員服尺寸對照表放大圖" class="w-full h-auto rounded-xl">
+    </div>
+  </div>
+
   <script>
     const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxPlSm1CDxxmjx1to0lKJ37szr0XncLojfx1DoG0Pa2bGKSZtB4d1UmgcPNQz-eTOcX5w/exec'; 
 
@@ -282,10 +364,19 @@
     const otherGradeContainer = document.getElementById('otherGradeContainer');
     const otherGradeInput = document.getElementById('otherGradeInput');
 
-    const idNumberInput = document.getElementById('idNumberInput');
-    const idErrorMsg = document.getElementById('idErrorMsg');
     const phoneInput = document.getElementById('phoneInput');
     const phoneErrorMsg = document.getElementById('phoneErrorMsg');
+
+    // 0. 尺寸參考圖放大燈箱控制
+    const sizeChartImg = document.getElementById('sizeChartImg');
+    const sizeLightbox = document.getElementById('sizeLightbox');
+    const closeLightboxBtn = document.getElementById('closeLightboxBtn');
+
+    sizeChartImg.addEventListener('click', () => sizeLightbox.classList.remove('hidden'));
+    closeLightboxBtn.addEventListener('click', () => sizeLightbox.classList.add('hidden'));
+    sizeLightbox.addEventListener('click', (e) => {
+      if (e.target === sizeLightbox) sizeLightbox.classList.add('hidden');
+    });
 
     // 1. 動態顯示「其他學校」輸入框
     schoolSelect.addEventListener('change', function() {
@@ -303,14 +394,7 @@
       if (isOther) otherGradeInput.focus();
     });
 
-    // 3. 身分證字號自動去空白、轉大寫與即時檢查
-    idNumberInput.addEventListener('input', function() {
-      this.value = this.value.replace(/\s+/g, '').toUpperCase();
-      const valid = /^[A-Z][1289A-Z][0-9]{8}$/.test(this.value);
-      idErrorMsg.classList.toggle('hidden', this.value.length === 0 || valid);
-    });
-
-    // 4. 手機號碼自動格式化為 09xx-xxxxxx（並防止 Google Sheets 吃掉開頭的 0）
+    // 3. 手機號碼自動格式化為 09xx-xxxxxx（並防止 Google Sheets 吃掉開頭的 0）
     phoneInput.addEventListener('input', function() {
       let digits = this.value.replace(/\D/g, '').slice(0, 10);
       if (digits.length > 4) {
@@ -355,7 +439,7 @@
     const resultModal = document.getElementById('resultModal');
     const closeModalBtn = document.getElementById('closeModalBtn');
 
-    function showResultModal({ success, name, school, plan }) {
+    function showResultModal({ success, name, school, plan, shirt }) {
       const iconBadge = document.getElementById('modalIconBadge');
       const title = document.getElementById('modalTitle');
       const message = document.getElementById('modalMessage');
@@ -369,6 +453,7 @@
         document.getElementById('summaryName').textContent = name;
         document.getElementById('summarySchool').textContent = school;
         document.getElementById('summaryPlan').textContent = plan;
+        document.getElementById('summaryShirt').textContent = shirt;
         summaryBox.classList.remove('hidden');
       } else {
         iconBadge.textContent = '!';
@@ -388,18 +473,12 @@
       if (e.target === resultModal) resultModal.classList.add('hidden');
     });
 
-    // 6. 表單送出處理（與既有 Google Apps Script 欄位完全相容）
+    // 6. 表單送出處理
     document.getElementById('volunteerForm').addEventListener('submit', function(e) {
       e.preventDefault(); 
 
-      // 再次確認身分證與手機格式
-      const idVal = idNumberInput.value.trim().toUpperCase();
+      // 確認手機格式
       const phoneDigits = phoneInput.value.replace(/\D/g, '');
-      if (!/^[A-Z][1289A-Z][0-9]{8}$/.test(idVal)) {
-        idErrorMsg.classList.remove('hidden');
-        idNumberInput.focus();
-        return;
-      }
       if (!/^09[0-9]{8}$/.test(phoneDigits)) {
         phoneErrorMsg.classList.remove('hidden');
         phoneInput.focus();
@@ -414,7 +493,6 @@
       btn.disabled = true;
 
       const formData = new FormData(this);
-      formData.set('id_number', idVal);
       formData.set('phone', formattedPhone);
 
       // 依報名身分別，統一寫入原本的 school / grade 欄位，另送 identity 給新的「報名身分別」欄
@@ -442,6 +520,7 @@
 
       const submittedName = formData.get('name');
       const submittedPlan = formData.get('plan');
+      const submittedShirt = `${formData.get('shirt_color')} / ${formData.get('shirt_size')}`;
 
       fetch(APPS_SCRIPT_URL, {
         method: 'POST',
@@ -464,7 +543,8 @@
           success: true,
           name: submittedName,
           school: finalSchool,
-          plan: submittedPlan
+          plan: submittedPlan,
+          shirt: submittedShirt
         });
       })
       .catch(error => {
